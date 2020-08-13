@@ -13,6 +13,14 @@ class User < ApplicationRecord
     posts.exists?(id: post.id)
   end
 
+  def avatar_image
+    if profile&.avatar&.attached?
+      profile.avatar
+    else
+      'default-avatar.png'
+    end
+  end
+
   def prepare_profile
     profile || build_profile
   end
