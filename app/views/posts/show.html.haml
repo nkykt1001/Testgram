@@ -1,0 +1,4 @@
+= @post.picture
+= @post.text
+= link_to 'edit', edit_post_path(@post)
+= link_to 'delete', post_path(@post), data: {method: 'delete', confirm: '本当に削除しますか？'}
