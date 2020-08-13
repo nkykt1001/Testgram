@@ -1,2 +1,7 @@
 = link_to 'profile', profile_path
 = link_to 'new', new_post_path
+
+- @posts.each do |post|
+  = link_to post_path(post) do
+    = post.picture
+    = post.text
