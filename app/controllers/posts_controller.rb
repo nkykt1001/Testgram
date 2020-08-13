@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
     def index
         @posts = Post.all
     end
@@ -8,37 +10,37 @@ class PostsController < ApplicationController
     end
 
     def new
-        @post = Post.new
+        @post = current_user.posts.build
     end
 
     def create
-        @post = Post.new(post_params)
+        @post = current_user.posts.build(post_params)
         if @post.save
-            redirect_to root_path, notice: '保存出来ました'
+            redirect_to root_path, notice: '投稿しました'
         else
-            flash.now[:error] = '保存出来ませんでした'
+            flash.now[:error] = '投稿出来ませんでした'
             render :new
         end
     end
 
     def edit
-        @post = Post.find(params[:id])
+        @post = current_user.posts.find(params[:id])
     end
 
     def update
-        @post = Post.find(params[:id])
+        @post = current_user.posts.find(params[:id])
         if @post.update(post_params)
-            redirect_to root_path, notice: '更新出来ました'
+            redirect_to root_path, notice: '投稿を更新しました'
         else
-            flash.now[:error] = '更新出来ませんでした'
+            flash.now[:error] = '投稿を更新出来ませんでした'
             render :edit
         end
     end
 
     def destroy
-        post = Post.find(params[:id])
+        post = current_user.posts.find(params[:id])
         post.destroy!
-        redirect_to root_path, notice: '削除しました'
+        redirect_to root_path, notice: '投稿を削除しました'
     end
 
     private
