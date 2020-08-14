@@ -9,10 +9,11 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
   %body
-  
+
     = image_tag current_user.avatar_image
     - if user_signed_in?
       = link_to 'ログアウト', destroy_user_session_path, data: {method: 'delete'}
+      = link_to 'いいね一覧', favorites_path
     - else
       = link_to 'ログイン', new_user_session_path
 
