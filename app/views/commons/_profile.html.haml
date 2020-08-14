@@ -1,0 +1,8 @@
+= image_tag @user.avatar_image
+- if user == current_user
+  = link_to 'edit', edit_profile_path
+- else
+  - if current_user&.has_followed?(user)
+    = link_to 'unfollow', account_unfollows_path(user), data: {method: 'post'}
+  = else
+    = link_to 'follow', account_follows_path(user), data: {method: 'post'}
