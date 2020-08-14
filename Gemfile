@@ -24,8 +24,6 @@ gem 'jbuilder', '~> 2.7'
 gem 'hamlit'
 gem 'annotate'
 gem 'devise'
-gem 'carrierwave'
-gem 'mini_magick'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

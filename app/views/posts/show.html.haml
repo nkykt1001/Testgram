@@ -1,11 +1,20 @@
 = image_tag @post.user.avatar_image
-= @post.picture
+= image_tag @post.picture
 = @post.text
 
 - if user_signed_in? && current_user.has_written?(@post)
   = link_to 'edit', edit_post_path(@post)
   = link_to 'delete', post_path(@post), data: {method: 'delete', confirm: '本当に削除しますか？'}
   = link_to 'comment', new_post_comment_path(@post)
+
+- if current_user.has_liked?(@post)
+  = link_to post_like_path(@post), data: { method: 'delete' } do
+    = image_tag 'after-like.svg'
+- else
+  = link_to post_like_path(@post), data: { method: 'post' } do
+    = image_tag 'before-like.svg'
+
+= @post.like_count
 
 - @comments.each do |comment|
   = comment.content
