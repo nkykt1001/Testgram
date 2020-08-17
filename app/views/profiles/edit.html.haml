@@ -11,11 +11,11 @@
     %div
       = f.label :accountname, 'アカウント名'
     %div
-      = f.text_field :accountname, class: 'text'
+      = f.text_field :accountname, class: 'text', value: 'example1234'
     %div
-      = f.label :pr, '自己紹介文'
+      = f.label :pr, '自己紹介'
     %div
-      = f.text_area :pr
+      = f.text_area :pr, class: 'text', value: 'こんにちは！'
     %div
       = f.label :gender, '性別'
     %div

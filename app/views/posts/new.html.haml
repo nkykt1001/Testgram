@@ -5,12 +5,8 @@
 
   = form_with(model: @post, url: posts_path, method: 'post', local: true) do |f|
     %div
-      = f.label :picture, '画像を選択'
-    %div
       = f.file_field :picture
     %div
-      = f.label :text, 'テキストを入力'
-    %div
-      = f.text_area :text, class: 'content'
+      = f.text_area :text, class: 'text', value: 'テキストを入力'
 
-    = f.submit '投稿', class: 'btn-primary'
+    = f.submit '投稿する', class: 'btn-primary'

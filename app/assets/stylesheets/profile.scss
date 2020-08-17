@@ -1,0 +1,62 @@
+@import 'commons';
+
+.menu {
+    width: 100%;
+    height: $icon-size;
+}
+
+.dropbtn {
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    float: right;
+
+    img {
+        width: $icon-size;
+        height: $icon-size;
+    }
+}
+
+.dropdown_content {
+
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    min-width: 150px;
+    z-index: 1;
+}
+
+.dropdown_content a {
+    display: block;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+
+.user_image {
+    text-align: center;
+    padding: 20px 0;
+
+    img {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+    }
+}
+
+.user_status {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+
+.user_pictures {
+    img {
+        width: 100%;
+        padding: 5px 0;
+    }
+}
+
