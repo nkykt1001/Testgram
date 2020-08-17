@@ -1,21 +1,37 @@
-= link_to account_path(@post.user) do
-  = image_tag @post.user.avatar_image
-= image_tag @post.picture
-= @post.text
+.container
+  .card
+    = link_to post_path(@post) do
+      .card_top
+        = link_to account_path(@post.user) do
+          = image_tag @post.user.avatar_image
+        = @post.user.profile.accountname
+        = @post.display_created_at
+        .dropmenu
+          = image_tag 'menu.svg'
+      - if @post.picture.attached?  
+        .card_images
+          = image_tag @post.picture
+      .card_reaction
+        .card_reaction_like
+          - if current_user&.has_liked?(@post)
+            = link_to post_like_path(@post), data: { method: 'delete' } do
+              = image_tag 'after-like.svg'
+          - else
+            = link_to post_like_path(@post), data: { method: 'post' } do
+              = image_tag 'before-like.svg'
+          = @post.like_count
+        .card_reaction_comment
+          = link_to new_post_comment_path(@post) do
+            = image_tag 'comment.svg'
+        .card_reaction_shere
+          = image_tag 'shere.svg'
+      .card_text
+        = @post.text
 
-- if user_signed_in? && current_user.has_written?(@post)
-  = link_to 'edit', edit_post_path(@post)
-  = link_to 'delete', post_path(@post), data: {method: 'delete', confirm: '本当に削除しますか？'}
-  = link_to 'comment', new_post_comment_path(@post)
+  - if current_user.has_written?(@post)
+    = link_to 'edit', edit_post_path(@post)
+    = link_to 'delete', post_path(@post), data: {method: 'delete', confirm: '本当に削除しますか？'}
+    = link_to 'comment', new_post_comment_path(@post)
 
-- if current_user.has_liked?(@post)
-  = link_to post_like_path(@post), data: { method: 'delete' } do
-    = image_tag 'after-like.svg'
-- else
-  = link_to post_like_path(@post), data: { method: 'post' } do
-    = image_tag 'before-like.svg'
-
-= @post.like_count
-
-- @comments.each do |comment|
-  = comment.content
+  - @comments.each do |comment|
+    = comment.content

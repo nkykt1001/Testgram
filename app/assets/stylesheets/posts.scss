@@ -1,0 +1,41 @@
+@import 'commons';
+
+.card {
+    margin: 24px 0;
+    cursor: pointer;
+
+    &_top {
+        display: flex;
+        line-height: 30px;
+        margin-bottom: 5px;
+        font-size: 6px;
+
+        img {
+            width: $icon-size;
+            height: $icon-size;
+            border-radius: 100%;
+        }
+    }
+
+    &_images {
+        position: relative;
+
+        img {
+            position: relative;
+            width: 100%;
+        }
+    }
+
+    &_reaction {
+        display: flex;
+        
+        &_comment {
+            padding: 0 8px;
+        }
+    }
+
+
+    &_text {
+        font-size: 12px;
+    }
+}

@@ -2,6 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %title Testgram
     = csrf_meta_tags
     = csp_meta_tag
@@ -9,21 +10,30 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
   %body
-
     - if user_signed_in?
-      = image_tag current_user.avatar_image
-      = link_to 'タイムライン', timeline_path
-      = link_to 'ログアウト', destroy_user_session_path, data: {method: 'delete'}
-      = link_to 'いいね一覧', favorites_path
+      .header
+        %div Testgram
+
+      .footer
+        .footer_list
+          .footer_home
+            = link_to root_path do
+              = image_tag 'home.svg'
+          .footer_post
+            = link_to new_post_path do
+              = image_tag 'post.svg'
+          .footer_liked
+            = link_to favorites_path do
+              = image_tag 'before-like.svg'
+          .footer_profile
+            = link_to profile_path do
+              = image_tag current_user.avatar_image
     - else
-      = link_to 'ログイン', new_user_session_path
+      = redirect_to new_user_session_path
 
     - if flash.present?
       .flash
         - flash.each do |key, value|
           %div{:class => key}= value
 
-    %p.notice= notice
-    %p.alert= alert
-    
     = yield
