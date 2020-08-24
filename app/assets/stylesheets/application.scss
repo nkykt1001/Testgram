@@ -14,6 +14,7 @@
  *= require_self
  */
 
+ @import 'devise';
  @import 'commons';
  @import 'posts';
  @import 'profile';
@@ -41,7 +42,6 @@
      height: 100%;
      font-size: 1em;
   }
-
 
  .header {
      text-align: center;
@@ -71,6 +71,10 @@
  }
   
  .container {
-     padding: 12px 12px;
+     padding: 12px 12px 0 12px;
+     min-height: 100vh;
      width: 100%;
+     position: relative;
+     padding-bottom: 50px;
+     box-sizing: border-box;
  }

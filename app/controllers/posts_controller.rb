@@ -1,13 +1,15 @@
 class PostsController < ApplicationController
-    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+    before_action :authenticate_user!
 
     def index
-        @posts = Post.all.order(created_at: :desc)
+        user_ids = current_user.followings.pluck(:id)
+        @posts = Post.where(user_id: [current_user.id, *user_ids]).order(created_at: :desc)
     end
 
     def show
         @post = Post.find(params[:id])
         @comments = @post.comments
+        
     end
 
     def new

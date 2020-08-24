@@ -3,6 +3,7 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
+#  accountname            :string           default(""), not null
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  remember_created_at    :datetime
@@ -23,6 +24,10 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  validates :accountname, uniqueness: true
+  validates :email, uniqueness: true
+  validates :encrypted_password, uniqueness: true
 
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -48,7 +53,7 @@ class User < ApplicationRecord
     if profile&.avatar&.attached?
       profile.avatar
     else
-      'default-image.png'
+      'default-image.svg'
     end
   end
 
