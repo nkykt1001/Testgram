@@ -1,25 +1,38 @@
 @import 'commons';
 
 .card {
-    margin: 24px 0;
-    cursor: pointer;
+    margin: 24px 0 50px 0;
 
     &_top {
         display: flex;
-        line-height: 30px;
-        margin-bottom: 5px;
-        font-size: 6px;
-
+        font-size: 5px;
+        position: relative;
         img {
+            cursor: pointer;
             width: $icon-size;
             height: $icon-size;
             border-radius: 100%;
+        }
+
+        .name {
+            font-weight: bold;
+            padding-left: 8px;
+        }
+        
+        .time {
+            color: darkgray;
+            padding-left: 8px;
+        }
+
+        &_menu {
+            right: 0px;
+            position: absolute;
         }
     }
 
     &_images {
         position: relative;
-
+        padding: 5px 0;
         img {
             position: relative;
             width: 100%;
@@ -34,8 +47,20 @@
         }
     }
 
-
     &_text {
+        display: flex;
+        padding-top: 5px;
         font-size: 12px;
+        p {
+            font-weight: bold;
+            padding-right: 6px;
+        }
+    }
+
+    &_comment {
+        p {
+            padding: 5px 0;
+        }
+        
     }
 }

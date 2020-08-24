@@ -1,28 +1,6 @@
 .container
   - @posts.each do |post|
-    .card
-      = link_to post_path(post) do
-        .card_top
-          = link_to account_path(post.user) do
-            = image_tag post.user.avatar_image
-          = post.user.profile.accountname
-          = post.display_created_at
-        - if post.picture.attached?  
-          .card_images
-            = image_tag post.picture
-        .card_reaction
-          .card_reaction_like
-            - if current_user&.has_liked?(post)
-              = link_to post_like_path(post), data: { method: 'delete' } do
-                = image_tag 'after-like.svg'
-            - else
-              = link_to post_like_path(post), data: { method: 'post' } do
-                = image_tag 'before-like.svg'
-          .card_reaction_comment
-            = link_to new_post_comment_path(post) do
-              = image_tag 'comment.svg'
-          .card_reaction_shere
-            = image_tag 'shere.svg'
-        .card_text
-          = post.text
+    = render 'commons/post',post: post
+  
+
 
