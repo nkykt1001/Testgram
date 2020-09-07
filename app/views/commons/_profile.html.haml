@@ -12,18 +12,24 @@
             = link_to 'フォローする', account_follows_path(user), data: {method: 'post'}
         = link_to 'ログアウト', destroy_user_session_path, data: {method: 'delete'}
   .user_image
-    = image_tag user.avatar_image
+    = image_tag user.avatar_image, class: 'user-image'
   .user_detail
     = user.accountname
   .user_status
     .user_status_posts
-      %div 64posts
+      %p.number= user.posts.count
+      %p.count 投稿記事
     .user_status_following
-      %div 120follow
+      = link_to followings_account_path(user) do
+        %p.number= user.followings.count
+      %p.count フォロー
     .user_status_follower
-      %div 110follower
+      = link_to followers_account_path(user) do
+        %p.number= user.followers.count
+      %p.count フォロワー
   .user_pictures
-    - user.posts.each do |post|
+    - user.posts.order(created_at: :desc).each do |post|
       = link_to post_path(post) do
         - if post.picture.attached?
-          = image_tag post.picture
+          .picture-item
+            = image_tag post.picture

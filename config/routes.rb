@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   resource :timeline, only: [:show]
 
   resources :accounts, only: [:show] do
+    member do
+      get :followings, :followers
+    end
     resources :follows, only: [:create]
     resources :unfollows, only: [:create]
   end

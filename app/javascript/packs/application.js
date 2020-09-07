@@ -2,11 +2,14 @@
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
+//= require jquery
 
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -15,3 +18,74 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+import $ from 'jquery'
+import axios from 'axios'
+
+/*document.addEventListener('turbolinks:load', () => {
+    const dataset = $('#post-index').data()
+    const postId = dataset.postId
+    axios.get(`/posts/index/like`)
+      .then((response) => {
+        const hasLiked = response.data.hasLiked
+        if (hasLiked) {
+          $('.active_heart').removeClass('hidden')
+        } else {
+          $('.inactive_heart').removeClass('hidden')
+        }
+      })
+})*/
+
+$(document).on("turbolinks:load", function () {
+  $("#post_picture").on("change", function (e) {
+    var files = e.target.files;
+    var d = new $.Deferred().resolve();
+    $.each(files, function (i, file) {
+      d = d.then(function () {
+        return previewImage(file);
+      });
+    });
+  });
+ 
+  var previewImage = function (imageFile) {
+    var reader = new FileReader();
+    var img = new Image();
+    var def = $.Deferred();
+    reader.onload = function (e) {
+      $("#picture_preview").empty();
+      $("#picture_preview").append(img);
+      img.src = e.target.result;
+      def.resolve(img);
+    };
+    reader.readAsDataURL(imageFile);
+    return def.promise();
+  };
+});
+
+
+$(document).on("turbolinks:load", function () {
+  $("#profile_avatar").on("change", function (e) {
+    var files = e.target.files;
+    var d = new $.Deferred().resolve();
+    $.each(files, function (i, file) {
+      d = d.then(function () {
+        return previewImage(file);
+      });
+    });
+  });
+ 
+  var previewImage = function (imageFile) {
+    var reader = new FileReader();
+    var img = new Image();
+    var def = $.Deferred();
+    reader.onload = function (e) {
+      $("#avatar_preview").empty();
+      $("#avatar_preview").append(img);
+      img.src = e.target.result;
+      def.resolve(img);
+    };
+    reader.readAsDataURL(imageFile);
+    return def.promise();
+  };
+});
+

@@ -27,7 +27,7 @@
               = image_tag 'before-like.svg'
           .footer_profile
             = link_to profile_path do
-              = image_tag current_user.avatar_image
+              = image_tag current_user.avatar_image, class: 'user-image'
 
 
     - if flash.present?

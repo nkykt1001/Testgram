@@ -1,37 +1,32 @@
-.card
-  .card_top
-    = link_to account_path(post.user) do
-      = image_tag post.user.avatar_image
-    %div
-      %p.name= post.user.accountname
-      %p.time= post.display_created_at
-    .card_top_menu
-      - if current_user&.has_written?(post)
-        .dropdown
-          = image_tag 'menu.svg', class: 'dropbtn'
-          .dropdown-content
-            = link_to '編集する', edit_post_path(post)
-            = link_to '削除する', post_path(post), data: {method: 'delete', confirm: '本当に削除しますか？'}
+- posts.each do |post|
+  .card
+    .card_top
+      = link_to account_path(post.user) do
+        = image_tag post.user.avatar_image, class: 'user-image'
+      %div
+        %p.name= post.user.accountname
+        %p.time= time_ago_in_words(post.created_at) + '前'
+      .card_top_menu
+        - if current_user&.has_written?(post)
+          .dropdown
+            = image_tag 'menu.svg', class: 'dropbtn'
+            .dropdown-content
+              = link_to '編集する', edit_post_path(post)
+              = link_to '削除する', post_path(post), data: {method: 'delete', confirm: '本当に削除しますか？'}
 
-  - if post.picture.attached?  
-    .card_images
-      = image_tag post.picture
+    - if post.picture.attached?  
+      .card_images
+        = link_to post_path(post) do
+          = image_tag post.picture
 
-  .card_reaction
-    .card_reaction_like
-      - if current_user&.has_liked?(post)
-        = link_to post_like_path(post), data: { method: 'delete' } do
-          = image_tag 'after-like.svg'
-      - else
-        = link_to post_like_path(post), data: { method: 'post' } do
-          = image_tag 'before-like.svg'
-      = post.like_count
-    .card_reaction_comment
-      = link_to new_post_comment_path(post) do
-        = image_tag 'comment.svg'
-    .card_reaction_shere
-      = image_tag 'shere.svg'
+    .card_reaction
+      .card_reaction_like.index_like
+        = render 'commons/like', post: post
 
-  .card_text
-    %p= post.user.accountname
-    = post.text
+      .card_reaction_comment
+        = link_to new_post_comment_path(post) do
+          = image_tag 'comment.svg'
+
+    .card_text
+      %p= post.user.accountname
+      = post.text
