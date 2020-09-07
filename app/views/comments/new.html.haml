@@ -5,7 +5,7 @@
 
   = form_with(model: @comment, url: post_comments_path(@comment.post), method: 'post', local: true) do |f|
     %div
-      = f.label :content, 'コメント'
+      = f.label :content, 'コメントを入力'
     %div
-      = f.text_area :content
+      = f.text_area :content, rows: '5'
     = f.submit 'コメントを投稿する', class: 'btn-primary'

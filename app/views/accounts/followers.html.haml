@@ -1,0 +1,12 @@
+.container
+  .title 
+    フォロワー
+    = @user.followers.count
+    人
+  - @user.followers.each do |user|
+    .account-index
+      .account-image
+        = link_to account_path(user) do
+          = image_tag user.avatar_image, class: 'user-image'
+      .account-name
+        = user.accountname

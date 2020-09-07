@@ -13,13 +13,17 @@
  *= require_tree .
  *= require_self
  */
-
+ 
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
  @import 'devise';
  @import 'commons';
  @import 'posts';
  @import 'profile';
  @import 'form';
  @import 'button';
+ @import 'relation';
+
 
  html {
      word-spacing: 1px;
@@ -46,6 +50,7 @@
  .header {
      text-align: center;
      padding-top: 10px;
+     padding-bottom: 20px;
      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
      font-size: 24px;
  }
@@ -64,6 +69,13 @@
          padding-top: 10px;
      }
 
+     &_profile {
+         img {
+            border-radius: 100%;
+            object-fit: cover;
+         }
+     }
+
      img {
          width: $icon-size;
          height: $icon-size;
@@ -77,4 +89,8 @@
      position: relative;
      padding-bottom: 50px;
      box-sizing: border-box;
+ }
+
+ .hidden {
+     display: none;
  }

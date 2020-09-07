@@ -1,0 +1,28 @@
+@import 'commons';
+
+.title {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.account-index {
+    width: 100%;
+    display: flex;
+    padding: 10px 20px;    
+    border-top: solid 1px darkgray;
+    align-items: center;
+}
+
+.account-image {
+    padding-right: 20px;
+    img {
+        width: $icon-size;
+        height: $icon-size;
+    }
+}
+
+.account-name {
+    font-size: 12px;
+}

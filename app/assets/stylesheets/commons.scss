@@ -1,5 +1,19 @@
 $icon-size: 30px;
 
+a {
+    text-decoration: none;
+    color: royalblue;
+}
+
+img {
+    cursor: pointer;
+}
+
+.user-image {
+    border-radius: 100%;
+    object-fit: cover;
+}
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -19,14 +33,11 @@ $icon-size: 30px;
     border: solid 1px darkgray;
     min-width: 145px;
     z-index: 1;
-}
-
-.dropdown-content a {
-    display: block;
-    text-decoration: none;
-    color: royalblue;
-    padding: 3px 0 3px 5px;
-    font-size: 12px;
+    a {
+        display: block;
+        padding: 3px 0 3px 5px;
+        font-size: 12px;
+    }
 }
 
 .dropdown:hover .dropdown-content {

@@ -1,0 +1,7 @@
+- if current_user.has_liked?(post)
+  = link_to post_like_path(post), method: 'delete', remote: true do
+    = image_tag 'after-like.svg'
+- else
+  = link_to post_like_path(post), method: 'post', remote: true do
+    = image_tag 'before-like.svg'
+= post.likes.count

@@ -1,6 +1,41 @@
 .container
-  = render 'commons/post', post: @post
-  .card_comment
-    - @comments.each do |comment|
-      /= image_tag comment.user.avatar_image
-      %p= comment.content
+  .card
+    .card_top
+      = link_to account_path(@post.user) do
+        = image_tag @post.user.avatar_image, class: 'user-image'
+      %div
+        %p.name= @post.user.accountname
+        %p.time= time_ago_in_words(@post.created_at) + '前'
+      .card_top_menu
+        - if current_user&.has_written?(@post)
+          .dropdown
+            = image_tag 'menu.svg', class: 'dropbtn'
+            .dropdown-content
+              = link_to '編集する', edit_post_path(@post)
+              = link_to '削除する', post_path(@post), data: {method: 'delete', confirm: '本当に削除しますか？'}
+
+    - if @post.picture.attached?  
+      .card_images
+        = image_tag @post.picture
+
+    .card_reaction
+      .card_reaction_like.show_like
+        = render 'commons/like', post: @post
+
+      .card_reaction_comment
+        = link_to new_post_comment_path(@post) do
+          = image_tag 'comment.svg'
+
+    .card_text
+      %p= @post.user.accountname
+      = @post.text
+
+    .card_comment
+      - @comments.each do |comment|
+        .detail
+          .icon
+            = link_to account_path(comment.user) do
+              = image_tag comment.user.avatar_image, class: 'user-image'
+          .comments
+            %p.commenter= comment.user.accountname
+            %p.text= comment.content
