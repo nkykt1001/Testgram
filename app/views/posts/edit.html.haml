@@ -1,7 +1,7 @@
 .container
-  %ul
-    - @post.errors.full_messages.each do |message|
-      %li= message
+  - @post.errors.full_messages.each do |message|
+    .error
+      = message
 
   = form_with(model: @post, url: post_path(@post), method: 'put', local: true) do |f|
     %div

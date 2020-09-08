@@ -28,7 +28,7 @@
 
     .card_text
       %p= @post.user.accountname
-      = @post.text
+      = safe_join(@post.text.split("\n"),tag(:br))
 
     .card_comment
       - @comments.each do |comment|
@@ -37,5 +37,5 @@
             = link_to account_path(comment.user) do
               = image_tag comment.user.avatar_image, class: 'user-image'
           .comments
-            %p.commenter= comment.user.accountname
-            %p.text= comment.content
+            .commenter= comment.user.accountname
+            .text= safe_join(comment.content.split("\n"),tag(:br))

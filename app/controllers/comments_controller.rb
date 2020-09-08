@@ -10,9 +10,8 @@ class CommentsController < ApplicationController
         @comment = post.comments.build(comment_params)
         @comment.user_id = current_user.id
         if @comment.save
-            redirect_to post_path(post), notice: 'コメントを投稿しました'
+            redirect_to post_path(post)
         else
-            flash.now[:error] = 'コメントの投稿に失敗しました'
             render :new
         end
     end

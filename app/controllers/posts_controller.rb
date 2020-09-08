@@ -19,9 +19,8 @@ class PostsController < ApplicationController
     def create
         @post = current_user.posts.build(post_params)
         if @post.save
-            redirect_to root_path, notice: '投稿しました'
+            redirect_to root_path
         else
-            flash.now[:error] = '投稿出来ませんでした'
             render :new
         end
     end
@@ -33,9 +32,8 @@ class PostsController < ApplicationController
     def update
         @post = current_user.posts.find(params[:id])
         if @post.update(post_params)
-            redirect_to root_path, notice: '投稿を更新しました'
+            redirect_to root_path
         else
-            flash.now[:error] = '投稿を更新出来ませんでした'
             render :edit
         end
     end
@@ -43,7 +41,7 @@ class PostsController < ApplicationController
     def destroy
         post = current_user.posts.find(params[:id])
         post.destroy!
-        redirect_to root_path, notice: '投稿を削除しました'
+        redirect_to root_path
     end
 
     private
