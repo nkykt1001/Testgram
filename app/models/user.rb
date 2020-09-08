@@ -46,10 +46,6 @@ class User < ApplicationRecord
     posts.exists?(id: post.id)
   end
 
-  def has_liked?(post)
-    likes.exists?(post_id: post.id)
-  end
-
   def avatar_image
     if profile&.avatar&.attached?
       profile.avatar
@@ -69,7 +65,7 @@ class User < ApplicationRecord
 
   def unfollow!(user)
     user_id = get_user_id(user)
-    relation = following_relationships.find_by!(following_id: user.id)
+    relation = following_relationships.find_by!(following_id: user_id)
     relation.destroy!
   end
 

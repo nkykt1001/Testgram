@@ -21,7 +21,7 @@
 
     .card_reaction
       .card_reaction_like.index_like
-        = render 'commons/like', post: post
+        = render partial: 'commons/like', locals: {post: post, likes: @likes}
 
       .card_reaction_comment
         = link_to new_post_comment_path(post) do

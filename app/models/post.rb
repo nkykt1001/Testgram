@@ -21,6 +21,10 @@ class Post < ApplicationRecord
     validates :picture, presence: true
     validates :text, presence: true
 
+    def has_liked?(user)
+        likes.find_by(user_id: user_id)
+    end
+
     def like_count
         likes.count
     end

@@ -12,7 +12,7 @@
     %div
       #picture_preview
         - if @post.picture.attached?
-          = image_tag post.picture
+          = image_tag @post.picture
         - else
           .before-preview.picture
             画像のプレビューが表示されます
