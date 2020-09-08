@@ -29,4 +29,4 @@
 
     .card_text
       %p= post.user.accountname
-      = post.text
+      = safe_join(post.text.split("\n"),tag(:br))
