@@ -5,8 +5,8 @@
 
   = form_with(model: @post, url: post_path(@post), method: 'put', local: true) do |f|
     %div
-      = f.label :text, 'テキストを編集'
+      = f.label :content, 'テキストを編集'
     %div
-      = f.text_area :text, class: 'content'
+      = f.text_area :content, class: 'content'
 
     = f.submit '更新する', class: 'btn-primary'

@@ -17,8 +17,8 @@
           .before-preview.picture
             画像のプレビューが表示されます
     %div
-      = f.label :text, 'テキストを入力'
+      = f.label :content, 'テキストを入力'
     %div
-      = f.text_area :text, class: 'text', rows: '5'
+      = f.text_area :content, class: 'text', rows: '5'
 
     = f.submit '投稿する', class: 'btn-primary'

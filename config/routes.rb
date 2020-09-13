@@ -9,8 +9,6 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
 
-  resource :timeline, only: [:show]
-
   resources :accounts, only: [:show] do
     member do
       get :followings, :followers

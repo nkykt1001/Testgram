@@ -12,13 +12,9 @@
 #
 #  index_posts_on_user_id  (user_id)
 #
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+FactoryBot.define do
+    factory :post do
+        picture { Rack::Test::UploadedFile.new(File.join(Rails.root, 'app/assets/images/default-avatar.png')) }
+        content { Faker::Lorem.characters(number: 3) }
+    end
+end

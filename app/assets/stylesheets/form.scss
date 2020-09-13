@@ -57,6 +57,7 @@ textarea {
         margin-right: auto;
         width: 250px;
         height: 250px;
+        border-radius: 100%;
     }
 }
 
@@ -78,5 +79,6 @@ textarea {
         width: 250px;
         height: 250px;
         border-radius: 100%;
+        object-fit: cover;
     }
 }

@@ -27,7 +27,9 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'font-awesome-sass'
+gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
+gem 'faker'
 
 
 # Use Active Storage variant
@@ -41,6 +43,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
   gem 'rubocop-rails'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do

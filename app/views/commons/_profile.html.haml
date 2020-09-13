@@ -17,16 +17,16 @@
     = user.accountname
   .user_status
     .user_status_posts
-      %p.number= user.posts.count
-      %p.count 投稿記事
+      .number= user.posts.count
+      .count 投稿記事
     .user_status_following
       = link_to followings_account_path(user) do
-        %p.number= user.followings.count
-      %p.count フォロー
+        .number= user.followings.count
+      .count フォロー
     .user_status_follower
       = link_to followers_account_path(user) do
-        %p.number= user.followers.count
-      %p.count フォロワー
+        .number= user.followers.count
+      .count フォロワー
   .user_pictures
     - user.posts.order(created_at: :desc).each do |post|
       = link_to post_path(post) do

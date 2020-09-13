@@ -3,7 +3,7 @@
 # Table name: posts
 #
 #  id         :integer          not null, primary key
-#  text       :text
+#  content    :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :integer          not null
@@ -19,9 +19,9 @@ class Post < ApplicationRecord
     has_many :likes, dependent: :destroy
 
     validates :picture, presence: true
-    validates :text, presence: true
+    validates :content, presence: true
 
-    def has_liked?(user)
+    def has_liked?(user_id)
         likes.find_by(user_id: user_id)
     end
 

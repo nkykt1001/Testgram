@@ -1,13 +1,13 @@
 .container
-  .card
-    .card_top
+  .post
+    .post_top
       = link_to account_path(@post.user) do
         = image_tag @post.user.avatar_image, class: 'user-image'
       %div
-        %p.name= @post.user.accountname
-        %p.time= time_ago_in_words(@post.created_at) + '前'
-      .card_top_menu
-        - if current_user&.has_written?(@post)
+        .name= @post.user.accountname
+        .time= time_ago_in_words(@post.created_at) + '前'
+      .post_top_menu
+        - if user_signed_in? && current_user.has_written?(@post)
           .dropdown
             = image_tag 'menu.svg', class: 'dropbtn'
             .dropdown-content
@@ -15,22 +15,22 @@
               = link_to '削除する', post_path(@post), data: {method: 'delete', confirm: '本当に削除しますか？'}
 
     - if @post.picture.attached?  
-      .card_images
+      .post_images
         = image_tag @post.picture
 
-    .card_reaction
-      .card_reaction_like.show_like
-        = render 'commons/like', post: @post
+    .post_reaction
+      .post_reaction_like.show_like
+        = render 'commons/like', locals: { post: @post, likes: @likes }
 
-      .card_reaction_comment
+      .post_reaction_comment
         = link_to new_post_comment_path(@post) do
           = image_tag 'comment.svg'
 
-    .card_text
+    .post_text
       %p= @post.user.accountname
-      = safe_join(@post.text.split("\n"),tag(:br))
+      = safe_join(@post.content.split("\n"),tag(:br))
 
-    .card_comment
+    .post_comment
       - @comments.each do |comment|
         .detail
           .icon
