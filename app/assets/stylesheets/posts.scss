@@ -1,12 +1,13 @@
 @import 'commons';
 
-.card {
-    margin-bottom: 50px;
+.post {
+    margin-bottom: 40px;
 
     &_top {
         display: flex;
         font-size: 5px;
         position: relative;
+        height: 30px;
         img {
             width: $icon-size;
             height: $icon-size;

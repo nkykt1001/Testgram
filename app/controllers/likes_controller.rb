@@ -4,8 +4,8 @@ class LikesController < ApplicationController
     def create
         @post = Post.find(params[:post_id])
         @like = Like.create(user_id: current_user.id, post_id: params[:post_id])
+        @like.save
         @likes = Like.where(post_id: params[:post_id])
-        @post.reload
     end
 
     def destroy
@@ -13,7 +13,6 @@ class LikesController < ApplicationController
         like = Like.find_by(user_id: current_user.id, post_id: params[:post_id])
         like.destroy
         @likes = Like.where(post_id: params[:post_id])
-        @post.reload
     end
 
 end

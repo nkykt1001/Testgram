@@ -10,15 +10,14 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
  
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+ @import 'bootstrap';
  @import 'devise';
  @import 'commons';
- @import 'errors';
+ @import 'flash';
  @import 'posts';
  @import 'profile';
  @import 'form';
@@ -82,14 +81,9 @@
          height: $icon-size;
      }
  }
-  
+
  .container {
-     padding: 12px 12px 0 12px;
-     min-height: 100vh;
-     width: 100%;
-     position: relative;
-     padding-bottom: 50px;
-     box-sizing: border-box;
+     height: 100vh;
  }
 
  .hidden {

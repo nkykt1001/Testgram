@@ -4,24 +4,24 @@
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = render "devise/shared/error_messages", resource: resource
     .field
-      = f.label :アカウント名
+      = f.label :accountname, 'アカウント名'
       %br/
-      = f.text_field :accountname, class: 'text'
+      = f.text_field :accountname, class: 'text', id: 'session_accountname'
     .field
       = f.label :email
       %br/
-      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'text'
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'text', id: 'session_email'
     .field
       = f.label :password
       - if @minimum_password_length
         %em
-          (#{@minimum_password_length} characters minimum)
+          (#{@minimum_password_length} 文字以上)
       %br/
-      = f.password_field :password, autocomplete: "new-password", class: 'text'
+      = f.password_field :password, autocomplete: "new-password", class: 'text', id: 'session_password'
     .field
       = f.label :password_confirmation
       %br/
-      = f.password_field :password_confirmation, autocomplete: "new-password", class: 'text'
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: 'text', id: 'session_password_confirmation'
     .actions
       = f.submit "登録する", class: 'btn-primary'
   = render "devise/shared/links"
