@@ -1,0 +1,16 @@
+{
+    "name": "Testgram",
+    "description": "This is Testgram",
+    "keywords": [],
+    "website": "",
+    "repository": "https://github.com/nkykt1001/Testgram",
+    "env": {},
+    "addons": [
+      "heroku-postgresql:hobby-dev"
+    ],
+    "buildpacks": [{
+      "url": "heroku/nodejs"
+    }, {
+      "url": "heroku/ruby"
+    }]
+  }

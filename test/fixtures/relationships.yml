@@ -2,11 +2,11 @@
 #
 # Table name: relationships
 #
-#  id           :integer          not null, primary key
+#  id           :bigint           not null, primary key
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  follower_id  :integer          not null
-#  following_id :integer          not null
+#  follower_id  :bigint           not null
+#  following_id :bigint           not null
 #
 # Indexes
 #
