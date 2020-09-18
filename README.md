@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+簡易的な画像投稿アプリです。Instagramを参考に作成しました。
 
-Things you may want to cover:
+## アプリ名 / URL
 
-* Ruby version
+Testgram / https://testgram-nkykt1001.herokuapp.com/
 
-* System dependencies
+## 実装機能
 
-* Configuration
+* ユーザー認証
 
-* Database creation
+* プロフィール機能
 
-* Database initialization
+* 画像投稿機能
 
-* How to run the test suite
+* 投稿の表示/新規作成/編集/削除
 
-* Services (job queues, cache servers, search engines, etc.)
+* いいね機能
 
-* Deployment instructions
+* いいねした投稿の一覧表示
 
-* ...
+* フォロー機能
+
+* タイムライン機能
+
+* コメント機能
+
+* テスト
