@@ -4,7 +4,7 @@
 
 ## アプリ名 / URL
 
-Testgram / https://testgram-nkykt1001.herokuapp.com/
+Testgram / https://testgram-nkykt1001.herokuapp.com
 
 ## 実装機能
 
